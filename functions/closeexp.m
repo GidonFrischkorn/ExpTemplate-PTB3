@@ -4,7 +4,7 @@
 function closeexp(window)
 
 ShowCursor(1);  % Show cursor again
-ListeChar();    % Enable listening to the keyboard
+ListenChar();    % Enable listening to the keyboard
 Screen(window,'CloseAll'); % Close window
 
 % Clear buffer for saved evetns
