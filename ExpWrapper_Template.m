@@ -123,7 +123,7 @@ for expTrial = 1:expinfo.nExpTrials % Loop durch alle Experimental-Trials
     ExpTrials = DisplayTrial(expinfo, ExpTrials, expTrial, isPractice);
     
     % Show pause screen after the pre-defined number of trials
-    if mod(expTrial,expinfo.Trials2Pause) == 0
+    if mod(expTrial,expinfo.Trials2Pause) == 0 && expTrial ~= expinfo.nExpTrials
         Pause=[expinfo.InstFolder 'Break.jpg'];
         ima=imread(Pause, 'jpg');
         dImageWait(expinfo,ima);
