@@ -22,6 +22,11 @@ testExp = input('Is this a test run (0 = no, 1 = yes): ');
 expinfo.showPractice = 1;
 
 %% Allgemeine Einstellungen & Start von PTB %%
+% Create Folder for BackUp Files if it does not exist
+if ~exist('DataFiles', 'dir')
+    mkdir DataFiles
+end
+
 % Add folders to MATLAB to access functions, instruction slides, and
 % location for data backup
 addpath('functions', 'Instructions', 'DataFiles');
