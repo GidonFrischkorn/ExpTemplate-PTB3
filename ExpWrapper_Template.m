@@ -3,25 +3,6 @@
 
 clear all; % Start the experiment with empty workspace
 clc; % Clear command window
-    
-%% Enter Subject & Session ID + further Info if needed %%
-expinfo.taskName = 'SimonExample';
-disp(['%%%%%%%%%%%%%%%%%%%%%%%%%% ' expinfo.taskName ' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%']);
-
-% Specify subject ID
-expinfo.subject = input('Enter participant number: ');
-
-% Specify session ID
-expinfo.session = input('Enter session number: '); 
-
-% Switch on test mode. This opens up a smaller PTB window, so that you can
-% exit the PTB window and see whether an error occurs in your code
-testExp = input('Is this a test run (0 = no, 1 = yes): ');
-
-% You can request further information here, if needed. 
-expinfo.showPractice = 1;
-
-%% Allgemeine Einstellungen & Start von PTB %%
 % Create Folder for BackUp Files if it does not exist
 if ~exist('DataFiles', 'dir')
     mkdir DataFiles
@@ -29,8 +10,29 @@ end
 
 % Add folders to MATLAB to access functions, instruction slides, and
 % location for data backup
-addpath('functions', 'Instructions', 'DataFiles');
+addpath('functions', 'Instructions', 'DataFiles');   
+%% Enter Subject & Session ID + further Info if needed %%
+% Define a task name
+TaskName = 'SimonExample';
 
+% Definde variables to be specified when the experiment starts.
+vars = {'sub','ses','test','prac'};
+% The following variables can be specified:
+    % Subject ID = 'sub'
+    % Session Number = 'ses'
+    % Test Run = 'test'
+    % Instruction Language = 'lang'
+    % Run practive = 'prac'
+    % Subject's Age = 'age'
+    % Subject's Gender = 'gender'
+    % Subject's Sex = 'sex'
+
+% Run provideInfo function. This opens up a dialoge box asking for the
+% specified information. For all other variables default values are used.
+expinfo = provideInfo(TaskName,'all');
+clearvars TaskName vars % clean up workspace
+
+%% Allgemeine Einstellungen & Start von PTB %%
 % Setting a seed for randomization ensures that you can reproduce
 % randomized variables for each subject and session id.
 expinfo.mySeed = 100 * expinfo.subject+ expinfo.session;
@@ -40,7 +42,7 @@ rng(expinfo.mySeed);
 % checkPTB(); % no longer necessary because implemented in the startPTB function
 
 % Open PTB windown
-expinfo = startPTB(expinfo,testExp); 
+expinfo = startPTB(expinfo,expinfo.testExp); 
 
 % Read in Exp Settings. This is only to keep your wrapper code tidy and
 % structured. All Settings for the Experiment should be specified in this
