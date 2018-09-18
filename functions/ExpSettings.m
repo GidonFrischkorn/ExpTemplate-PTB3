@@ -1,9 +1,22 @@
 % This function loads all settings for the experiment
 
 function expinfo = ExpSettings(expinfo)
+%% Get Date an time for this session
+expinfo.DateTime = datetime('now');
+
+expinfo.DateTime.Format = 'dd-MMM-yyyy';
+expinfo.Date = cellstr(expinfo.DateTime);
+expinfo.Date = expinfo.Date{1};
+
+expinfo.DateTime.Format = 'hh:mm:ss';
+expinfo.Time = cellstr(expinfo.DateTime);
+expinfo.Time = expinfo.Time{1};
+
 %% Specify Stimulus and Text properties (Size, Position, etc.)
 expinfo.stimulussize = 40; % in Pixel bzw. Point
-expinfo.BoxSize = [0 0 0.05*expinfo.maxX 0.05*expinfo.maxY]; % Box-Gr��e mit 5% der Bildschirmaufl�sung
+expinfo.BoxSize = [0 0 0.05*expinfo.maxX 0.05*expinfo.maxY]; % Box-size with 5% of screen size
+
+%% Secify number of general instruction slides
 expinfo.InstStop = 6;
 
 %% Timing - fixed in all trials

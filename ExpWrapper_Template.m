@@ -3,6 +3,7 @@
 
 clear all; % Start the experiment with empty workspace
 clc; % Clear command window
+
 % Create Folder for BackUp Files if it does not exist
 if ~exist('DataFiles', 'dir')
     mkdir DataFiles
