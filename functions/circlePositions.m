@@ -22,7 +22,7 @@ anglesRad = anglesDeg*(pi/180);
 % Compute X and Y-positions via trigonmetric functions and add the center
 % coordinates to these coordinates
 Xpos = sin(anglesRad).* radius + centerX;
-Ypos = -cos(anglesRad).* radius + centerY;
+Ypos = cos(anglesRad).* radius + centerY;
 
 %% End of Function
 % This function was programmed by Gidon T. Frischkorn, as part of a

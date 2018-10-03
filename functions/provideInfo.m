@@ -3,7 +3,7 @@
 
 function [expinfo] = provideInfo(TaskName,vars)
 
-expinfo.ExpName = TaskName;
+expinfo.taskName = TaskName;
 
 %% specfiy input prompts
 % Specfiy all possible prompts
@@ -32,7 +32,7 @@ pos_use = find(use);
 prompt_all = {prompt_subID;prompt_sesID;prompt_testRun;prompt_InstLanguage; ...
     prompt_practice;prompt_age;prompt_gender;prompt_sex};
 prompt_select = prompt_all(use);
-prompt_answer = inputdlg(prompt_select,expinfo.ExpName);
+prompt_answer = inputdlg(prompt_select,expinfo.taskName);
 
 if isempty(prompt_answer)
     error('No input given. Please restart and enter information.')
