@@ -52,7 +52,7 @@ else
 end
 
 %% Open Psychtoolbox window
-if testExp ~= 0 % test run
+if testExp % test run
     testWindow = [100 100 700 500];
     expinfo.numScreens=Screen('Screens');
     if max(expinfo.numScreens) > 1 % More than one screen on the setup
