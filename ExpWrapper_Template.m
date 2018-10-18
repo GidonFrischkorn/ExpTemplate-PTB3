@@ -17,7 +17,7 @@ addpath('functions', 'Instructions', 'DataFiles');
 TaskName = 'SimonExample';
 
 % Definde variables to be specified when the experiment starts.
-vars = {'sub','ses','test','prac'};
+vars = {'sub','ses','prac','test','sex'};
 % The following variables can be specified:
     % Subject ID = 'sub'
     % Session Number = 'ses'
@@ -30,7 +30,7 @@ vars = {'sub','ses','test','prac'};
 
 % Run provideInfo function. This opens up a dialoge box asking for the
 % specified information. For all other variables default values are used.
-expinfo = provideInfo(TaskName,'all');
+expinfo = provideInfo(TaskName,vars);
 clearvars TaskName vars % clean up workspace
 
 %% Allgemeine Einstellungen & Start von PTB %%
@@ -144,7 +144,6 @@ save(BackUp_Trial,'ExpTrials');
 save(BackUp_ExpInfo,'expinfo');
 
 %% End Experiment
-
 % Display one final slide telling the participant that the experiment is
 % finished.
 EndExp=[expinfo.InstFolder 'ExpEnd.jpg'];
@@ -152,7 +151,7 @@ ima=imread(EndExp, 'jpg');
 dImageWait(expinfo,ima);
 
 Priority(0); % Reset priority to low level
-closeexp(expinfo.window); % Close the experiment
+expinfo = closeexp(expinfo); % Close the experiment
 
 %% End of Script
 % This script was programmed by Gidon T. Frischkorn, as part of a

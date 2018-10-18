@@ -40,9 +40,9 @@ Trial = getresponse(expinfo, Trial, expTrial, Trial(expTrial).time_probe);
 
 if isPractice == 1 % Show feedback in practice trials
     if Trial(expTrial).ACC == 1
-        timestamp_FB = TextCenteredOnPos(expinfo.window,'RICHTIG',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.stimColor);
+        timestamp_FB = TextCenteredOnPos(expinfo.window,'RICHTIG',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.green);
     elseif Trial(expTrial).ACC == 0
-        timestamp_FB = TextCenteredOnPos(expinfo.window,'FALSCH',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.stimColor);
+        timestamp_FB = TextCenteredOnPos(expinfo.window,'FALSCH',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.red);
     elseif Trial(expTrial).ACC == -2
         timestamp_FB = TextCenteredOnPos(expinfo.window,'ZU LANGSAM',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.stimColor);
     end

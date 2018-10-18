@@ -1,15 +1,19 @@
 % This function clears the buffer and closes the currnetly running
 % experiment
 
-function closeexp(window)
+function [expinfo] = closeexp(expinfo)
 
 ShowCursor(1);  % Show cursor again
 ListenChar();    % Enable listening to the keyboard
-Screen(window,'CloseAll'); % Close window
+Screen('CloseAll'); % Close window
 
 % Clear buffer for saved evetns
 while KbCheck; end
 FlushEvents('keyDown');
+
+%% Code end time of experiment
+format shortg
+expinfo.endTime = clock;
 
 %% End of Function
 % This function was programmed by Gidon T. Frischkorn, as part of a
