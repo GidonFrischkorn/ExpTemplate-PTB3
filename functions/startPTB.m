@@ -43,29 +43,16 @@ ListenChar(2);
 % little noisier timing
 Screen('Preference','SyncTestSettings' , 0.05, 50, 0.15, 5);
 
-if testExp ~= 0
-    % SyncTestSettings
-    Screen('Preference','SkipSyncTests', 0); % switched on
-else % testRun
+if testExp % testRun
     % SyncTestSettings
     Screen('Preference','SkipSyncTests', 1); % switched off
+else
+    % SyncTestSettings
+    Screen('Preference','SkipSyncTests', 0); % switched on
 end
 
 %% Open Psychtoolbox window
-if testExp ~= 0 % no test run
-    expinfo.numScreens=Screen('Screens');
-    if max(expinfo.numScreens) > 1 % More than one screen on the setup
-        expinfo.ScreenNum = 1;
-        % Open Full Screen window with the specified background color
-        % on the screen with screen Num = 1
-        [expinfo.window, expinfo.rect] = Screen('OpenWindow',expinfo.ScreenNum,expinfo.Colors.bgColor);
-    else
-        expinfo.ScreenNum = 0;
-        % Open Full Screen window on the installed screen with the
-        % specified background color
-        [expinfo.window, expinfo.rect] = Screen('OpenWindow',expinfo.ScreenNum,expinfo.Colors.bgColor);
-    end
-else % test run
+if testExp ~= 0 % test run
     testWindow = [100 100 700 500];
     expinfo.numScreens=Screen('Screens');
     if max(expinfo.numScreens) > 1 % More than one screen on the setup
@@ -78,6 +65,19 @@ else % test run
         % Open test window on the installed screen with the
         % specified background color
         [expinfo.window, expinfo.rect] = Screen('OpenWindow',expinfo.ScreenNum,expinfo.Colors.bgColor, testWindow);
+    end
+else 
+    expinfo.numScreens=Screen('Screens');
+    if max(expinfo.numScreens) > 1 % More than one screen on the setup
+        expinfo.ScreenNum = 1;
+        % Open Full Screen window with the specified background color
+        % on the screen with screen Num = 1
+        [expinfo.window, expinfo.rect] = Screen('OpenWindow',expinfo.ScreenNum,expinfo.Colors.bgColor);
+    else
+        expinfo.ScreenNum = 0;
+        % Open Full Screen window on the installed screen with the
+        % specified background color
+        [expinfo.window, expinfo.rect] = Screen('OpenWindow',expinfo.ScreenNum,expinfo.Colors.bgColor);
     end
 end
 
@@ -96,12 +96,18 @@ expinfo.maxLum = Screen('ColorRange', expinfo.window);
 
 %% Hide cursor for usual experiments
 % if cursor input is needed switch back on
-if testExp ~= 0
+if testExp
     if expinfo.Cursor == 0
         HideCursor;
     else
         ShowCursor(0);	% arrow cursor
     end
+else
+   if expinfo.Cursor == 0
+        HideCursor;
+    else
+        ShowCursor(0);	% arrow cursor
+    end 
 end
 
 %% Code colors used within the experiment

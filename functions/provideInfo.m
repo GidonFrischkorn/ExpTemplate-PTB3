@@ -16,8 +16,8 @@ prompt_practice = 'Run practice trials (1 = yes, 0 = no):';
 % Usually demographic data should be assessed after the experiment, as it
 % might cause effects on perforance
 prompt_age = 'Enter subject age (in years):';
-prompt_gender = 'Enter subject gender (in words):';
-prompt_sex = 'Enter subject sex (in words):';
+prompt_gender = 'Enter subject gender (f = feminin, m = maskulin, n = neither, b = both):';
+prompt_sex = 'Enter subject sex (f = female, m = male, i = inter-sexual, o = other):';
 
 % Specify which prompts to use
 all_vars = {'sub','ses','test','lang','prac','age','gender','sex'};
