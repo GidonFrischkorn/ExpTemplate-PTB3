@@ -141,6 +141,7 @@ for trial = 1:nTrials
         end
     end
     
+    % Specify the cue direction dependend on the Cue Validity
     if strcmp(Trial(trial).CueValidity,'valid')
         Trial(trial).CueDirection = Trial(trial).StimLocation;
     else
@@ -150,6 +151,11 @@ for trial = 1:nTrials
             Trial(trial).CueDirection = 'left';
         end
     end
+    
+    % Initialise the response variables
+    Trial(trial).response = 0;
+    Trial(trial).ACC = -9;
+    Trial(trial).RT = -9;
 end
 
 % Now we have a MATLAB Structure with as many fields as trials and the

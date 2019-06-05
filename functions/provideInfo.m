@@ -90,6 +90,8 @@ end
 %% Code start time of experiment
 format shortg
 expinfo.startTime = clock;
-
 end
-
+%% End of Function
+% This function was programmed by Gidon T. Frischkorn, as part of a
+% template for MATLAB experiments. If you have any questions please contact
+% me via mail: gidon.frischkorn@psychologie.uzh.ch

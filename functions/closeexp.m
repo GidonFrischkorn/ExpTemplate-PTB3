@@ -2,7 +2,6 @@
 % experiment
 
 function [expinfo] = closeexp(expinfo)
-
 ShowCursor(1);  % Show cursor again
 ListenChar();    % Enable listening to the keyboard
 Screen('CloseAll'); % Close window
@@ -18,4 +17,4 @@ expinfo.endTime = clock;
 %% End of Function
 % This function was programmed by Gidon T. Frischkorn, as part of a
 % template for MATLAB experiments. If you have any questions please contact
-% me via mail: gidon.frischkorn@psychologie.uni-heidelberg.de
+% me via mail: gidon.frischkorn@psychologie.uzh.ch

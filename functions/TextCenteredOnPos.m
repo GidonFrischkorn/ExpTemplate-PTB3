@@ -1,5 +1,5 @@
-function timestamp_flip = TextCenteredOnPos(window,text,x,y,color,when,flip,angle)
-    
+function timestamp_flip = TextCenteredOnPos(window,text,x,y,color,when,mirror,angle)
+    %% Default settings
     % Set color if it is not supplied in the arguments
     if ~exist('color','var')
         color = BlackIndex(window);
@@ -8,9 +8,9 @@ function timestamp_flip = TextCenteredOnPos(window,text,x,y,color,when,flip,angl
     end
 
     if ~exist('flip','var')
-        flip = 0;
-    elseif isempty(flip)
-        flip = 0;
+        mirror = 0;
+    elseif isempty(mirror)
+        mirror = 0;
     end
 
     if ~exist('angle','var')
@@ -19,6 +19,7 @@ function timestamp_flip = TextCenteredOnPos(window,text,x,y,color,when,flip,angl
         angle = 0;
     end
     
+    %% Implementing the Text Position, Rotation and Mirroring of the Text
     % Compute Coordinated to Center text on
     textbounds = Screen('TextBounds', window, text);
     posX = x - textbounds(3)/2;
@@ -30,14 +31,13 @@ function timestamp_flip = TextCenteredOnPos(window,text,x,y,color,when,flip,angl
 
     % Translate origin into the geometric center of text:
     Screen('glTranslate', window, x, y, 0);
-    Screen('glRotate', window, angle);
-    if flip
+    if mirror
         Screen('glScale', window, -1, 1, 1);
     end
-
-    % We need to undo the translations...
+    Screen('glRotate', window, angle);
     Screen('glTranslate', window, -x, -y, 0);
 
+    %% Draw & Flip the text to the screen
     % Draw text on screen and Flip Scree
     Screen('DrawText',window, text, posX, posY, color);
 
@@ -63,4 +63,4 @@ end
 %% End of Function
 % This function was programmed by Gidon T. Frischkorn, as part of a
 % template for MATLAB experiments. If you have any questions please contact
-% me via mail: gidon.frischkorn@psychologie.uni-heidelberg.de
+% me via mail: gidon.frischkorn@psychologie.uzh.ch

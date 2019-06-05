@@ -53,10 +53,12 @@ end
 Trial(expTrial).time_ITI1 = clearScreen(expinfo.window,expinfo.Colors.bgColor,next_flip);
 next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_ITI1,expinfo.MinITIduration);
 
-%% Recording Data
+%% Recording Data to a text file
 if isPractice == 1
+    % Open the respective text file and specify to append the information
     fid = fopen(expinfo.pracFile, 'a');
 else
+    % Open the respective text file and specify to append the information
     fid = fopen(expinfo.expFile, 'a');
 end
 
@@ -80,4 +82,4 @@ end
 %% End of Function
 % This function was programmed by Gidon T. Frischkorn, as part of a
 % template for MATLAB experiments. If you have any questions please contact
-% me via mail: gidon.frischkorn@psychologie.uni-heidelberg.de
+% me via mail: gidon.frischkorn@psychologie.uzh.ch

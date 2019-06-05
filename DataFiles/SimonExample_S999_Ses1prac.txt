@@ -1,0 +1,10 @@
+999   1   no R incongruent invalid 1 0.6654 l l 
+999   2   no L   congruent invalid 1 0.5352 d d 
+999   3   no R incongruent invalid 1 0.4987 l l 
+999   4   no L incongruent   valid 1 0.4311 d d 
+999   5   no L   congruent invalid 1 0.6309 d d 
+999   6   no R incongruent   valid 1 0.7433 l l 
+999   7   no L   congruent   valid 1 0.4881 d d 
+999   8   no L   congruent invalid 1 0.5084 d d 
+999   9   no R incongruent invalid 1 0.4486 l l 
+999  10   no L incongruent   valid 1 0.7592 d d 

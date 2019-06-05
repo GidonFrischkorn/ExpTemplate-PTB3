@@ -1,4 +1,10 @@
-% Open PTB window and specify some basic settings
+% This functions opens a PTB window and saves some information on the PTB
+% window as well as the associated hardware. Please note that some basic
+% settings are made:
+    % Line 25: Specifies whether a cursor is shown or not
+    % Line 117ff.: Some basic colors are spcified
+    % Line 125ff.: Some fonts that are likely installed on your operating
+    % system are specified
 
 function expinfo = startPTB(expinfo, testExp)
 %% General Settings

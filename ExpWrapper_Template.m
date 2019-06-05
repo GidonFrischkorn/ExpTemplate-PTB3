@@ -16,8 +16,8 @@ addpath('functions', 'Instructions', 'DataFiles');
 % Define a task name
 TaskName = 'SimonExample';
 
-% Definde variables to be specified when the experiment starts.
-vars = {'sub','ses','prac','test','sex'};
+% Definde variables that should be requested as input when the experiment starts.
+vars = {'sub','ses','prac','test'};
 % The following variables can be specified:
     % Subject ID = 'sub'
     % Session Number = 'ses'
@@ -38,9 +38,6 @@ clearvars TaskName vars % clean up workspace
 % randomized variables for each subject and session id.
 expinfo.mySeed = 100 * expinfo.subject+ expinfo.session;
 rng(expinfo.mySeed);
-
-% Check wether PTB is installed
-% checkPTB(); % no longer necessary because implemented in the startPTB function
 
 % Open PTB windown
 expinfo = startPTB(expinfo,expinfo.testExp); 
@@ -138,10 +135,8 @@ end
 % accsessed later
 BackUp_PracTrial = [expinfo.DataFolder,expinfo.taskName,'_PracTrials_S',num2str(expinfo.subject),'_Ses',num2str(expinfo.session)];
 BackUp_Trial     = [expinfo.DataFolder,expinfo.taskName,'_Trials_S',num2str(expinfo.subject),'_Ses',num2str(expinfo.session)];
-BackUp_ExpInfo   = [expinfo.DataFolder,expinfo.taskName,'_ExpInfo_S',num2str(expinfo.subject),'_Ses',num2str(expinfo.session)];
 save(BackUp_PracTrial,'PracticeTrials');
 save(BackUp_Trial,'ExpTrials');
-save(BackUp_ExpInfo,'expinfo');
 
 %% End Experiment
 % Display one final slide telling the participant that the experiment is
@@ -153,7 +148,11 @@ dImageWait(expinfo,ima);
 Priority(0); % Reset priority to low level
 expinfo = closeexp(expinfo); % Close the experiment
 
+% Save expinfo after closing the experiment
+BackUp_ExpInfo   = [expinfo.DataFolder,expinfo.taskName,'_ExpInfo_S',num2str(expinfo.subject),'_Ses',num2str(expinfo.session)];
+save(BackUp_ExpInfo,'expinfo');
+
 %% End of Script
 % This script was programmed by Gidon T. Frischkorn, as part of a
 % template for MATLAB experiments. If you have any questions please contact
-% me via mail: gidon.frischkorn@psychologie.uni-heidelberg.de
+% me via mail: gidon.frischkorn@psychologie.uzh.ch
